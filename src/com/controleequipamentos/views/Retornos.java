@@ -9,6 +9,7 @@ public class Retornos {
     //=================================================================
 
     public void totalProdutosAchados(int total){
-            System.out.println("|| Total de produtos encontrados: " + total + " ||");
+            System.out.println("\n|| Total de produtos encontrados: " + total + " ||");
+            System.out.println("|| ==============================");
     }
 }

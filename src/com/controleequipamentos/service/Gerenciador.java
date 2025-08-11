@@ -48,15 +48,15 @@ public class Gerenciador {
 
                     do {
                         menuAcessar = menus.menuEscolhaAcessoEquipamento();
-
+                        int totalAchados = 0;
                         if (menuAcessar == 1) {
                             boolean achou = false;
-                            int totalAchados = 0;
+                            totalAchados = 0;
                             String nomeOuCodigo = menus.insiraNomeOuCodigoEquipamento();
 
                             for (Equipamento equip : lista_equipamentos) {
                                 if (equip instanceof MotorEletrico motor) {
-                                    if (nomeOuCodigo.toLowerCase().contains(motor.getNome().toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
+                                    if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
                                         achou = true;
                                         totalAchados++;
                                     }
@@ -65,23 +65,24 @@ public class Gerenciador {
 
                             boolean sair = false;
 
-                            if (totalAchados == 1) {
-                                visualizarDetalhes(erros, retornos, nomeOuCodigo, sair, menus, menuAcessarEquipamento);
-                            } else if (totalAchados > 1) {
+                             if (totalAchados >= 1) {
                                 retornos.totalProdutosAchados(totalAchados);
                                 for (Equipamento equip : lista_equipamentos) {
                                     if (equip instanceof MotorEletrico motor) {
-                                        if (nomeOuCodigo.toLowerCase().contains(motor.getNome().toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
-                                            System.out.println(motor.getCodigo() + " - " + motor.getNome());
-                                            System.out.println("=================================");
+                                        if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
+                                            System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
+                                            System.out.println("|| ==============================");
                                         }
                                     }
                                 }
 
-                                if (achou == false) {
-                                    erros.erroEquipamentoNaoEncontrado();
-                                }
+                                String codigoEquip = menus.insiraCodigo();
+                                visualizarDetalhes(erros, retornos, codigoEquip, sair, menus, menuAcessarEquipamento);
+                            }
 
+                            if (achou == false) {
+                                erros.erroEquipamentoNaoEncontrado();
+                            }
 
                             } else if (menuAcessar == 2) {
 
@@ -90,7 +91,7 @@ public class Gerenciador {
                             } else {
                                 erros.opcaoInvalida();
                             }
-                        }
+
                     }while (menuAcessar != 0) ;
 
                     }
@@ -104,7 +105,7 @@ public class Gerenciador {
     public void visualizarDetalhes(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
         for (Equipamento equip : lista_equipamentos) {
             if (equip instanceof MotorEletrico motor) {
-                if (nomeOuCodigo.toLowerCase().contains(motor.getNome().toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
+                if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
 
                     while(menuAcessarEquipamento != 0 && !sair){
                         menuAcessarEquipamento = menus.menuAcessoEquipamento(motor.getNome());

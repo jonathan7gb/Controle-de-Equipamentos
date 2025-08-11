@@ -149,11 +149,18 @@ public class Menus {
 
     //=================================================
 
-
     public String insiraNomeOuCodigoEquipamento(){
         System.out.print("|| Insira o nome ou código do equipamento: ");
         String nomeCodigoEquipamento = scStr.nextLine();
         return nomeCodigoEquipamento;
+    }
+
+    //=================================================
+
+    public String insiraCodigo(){
+        System.out.print("\n|| Insira o código do equipamento desejado: ");
+        String codigoEquipamento = scStr.nextLine();
+        return codigoEquipamento;
     }
 
 }
