@@ -174,7 +174,7 @@ public class Menus {
         System.out.println("|| 2 - Remover do Estoque        ||");
         System.out.println("|| 0 - Voltar ao Menu Anterior   ||");
         System.out.println("|| ============================= ||");
-        System.out.println("|| Quantidade Atual: " + quantidadeAtual + "   ||");
+        System.out.println("|| Quantidade Atual: " + quantidadeAtual + "      ||");
         System.out.println("|| ============================= ||");
 
         while(!valido){
@@ -217,5 +217,35 @@ public class Menus {
 
         return quantidade;
     }
+
+    //=================================================
+
+    public int listarEquipamentos(){
+        int opcao = 0;
+        boolean valido = false;
+
+        System.out.println("\n|| ===== Listar Equipamentos ===== ||");
+        System.out.println("|| 1 - Listar Motores Elétricos     ||");
+        System.out.println("|| 2 - Listar Painéis de Controle   ||");
+        System.out.println("|| 3 - Listar Todos os Equipamentos ||");
+        System.out.println("|| 0 - Voltar ao Menu Principal     ||");
+        System.out.println("|| ================================ ||");
+
+        while(!valido){
+            System.out.print("|| Escolha uma opção: ");
+            String opcaoStr = scStr.nextLine();
+
+            try{
+                opcao = Integer.parseInt(opcaoStr);
+                valido = true;
+            }catch(NumberFormatException e){
+                erros.opcaoInvalida();
+            }
+        }
+
+        System.out.println("");
+        return opcao;
+    }
+
 
 }

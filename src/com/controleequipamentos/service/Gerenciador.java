@@ -131,17 +131,85 @@ public class Gerenciador {
                 }//BREAK DO CASE 2 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
 
             case 3 -> {
+                // ============ LISTAR EQUIPAMENTOS ========
+                int escolhaListar = 0;
+                do {
+                    escolhaListar = menus.listarEquipamentos();
 
-            }
-            }//ENCERRA O SWITCH -> OPÇÃO MENU PRINCIPAL DO SISTEMA
+                    switch (escolhaListar) {
+                        case 1 -> {
+                            boolean encontrado = false;
+                            System.out.println("|| ====== MOTORES ELÉTRICOS ===== ||");
+                            for(Equipamento equip : lista_equipamentos){
+                                if (equip instanceof MotorEletrico motor){
+                                    System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
+                                    System.out.println("|| ============================== || ");
+                                    encontrado = true;
+                                }
+                            }
+
+                            if (!encontrado) {
+                                erros.erroEquipamentoNaoEncontrado();
+                            }
+                        } //BREAK DO CASE 1 -> ESCOLHA LISTAR
+
+                        case 2 -> {
+                            boolean encontrado = false;
+                            System.out.println("|| ====== PAINÉIS DE CONTROLE ===== ||");
+                            for(Equipamento equip : lista_equipamentos){
+                                if (equip instanceof PainelControle painel){
+                                    System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
+                                    System.out.println("|| ================================ || ");
+                                    encontrado = true;
+                                }
+                            }
+
+                            if (!encontrado) {
+                                erros.erroEquipamentoNaoEncontrado();
+                            }
+                        } //BREAK DO CASE 2 -> ESCOLHA LISTAR
+
+                        case 3 -> {
+                            boolean encontrado = false;
+                            System.out.println("|| ====== TODOS EQUIPAMENTOS ===== ||");
+                            for(Equipamento equip : lista_equipamentos){
+                                if (equip instanceof PainelControle painel){
+                                    System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
+                                    System.out.println("|| =============================== || ");
+                                    encontrado = true;
+                                }else if (equip instanceof MotorEletrico motor){
+                                    System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
+                                    System.out.println("|| =============================== || ");
+                                    encontrado = true;
+                                }
+                            }
+
+                            if (!encontrado) {
+                                erros.erroEquipamentoNaoEncontrado();
+                            }
+                        } //BREAK DO CASE 3 -> ESCOLHA LISTAR
+
+                        case 0 -> {
+                            break;
+                        } //BREAK DO CASE 0 -> ESCOLHA LISTAR
+
+                        default -> {
+                            erros.opcaoInvalida();
+                        } //BREAK DO CASE DEFAULT -> ESCOLHA LISTAR
+                    }
+                }while(escolhaListar != 0);
+            }//BREAK DO CASE 3 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
+
+        }//ENCERRA O SWITCH -> OPÇÃO MENU PRINCIPAL DO SISTEMA
     }
 
 
     public void visualizarDetalhesMotor(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
+        boolean encontrado = false;
         for (Equipamento equip : lista_equipamentos) {
             if (equip instanceof MotorEletrico motor) {
                 if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
-
+                    encontrado = true;
                     while(menuAcessarEquipamento != 0 && !sair){
                         menuAcessarEquipamento = menus.menuAcessoEquipamento(motor.getNome());
                         switch (menuAcessarEquipamento){
@@ -188,13 +256,18 @@ public class Gerenciador {
                 }
             }
         }
+
+        if (!encontrado) {
+            erros.erroEquipamentoNaoEncontrado();
+        }
     }
 
     public void visualizarDetalhesPainel(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
+       boolean encontrado = false;
         for (Equipamento equip : lista_equipamentos) {
             if (equip instanceof PainelControle painel) {
                 if (painel.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(painel.getCodigo())) {
-
+                    encontrado = true;
                     while(menuAcessarEquipamento != 0 && !sair){
                         menuAcessarEquipamento = menus.menuAcessoEquipamento(painel.getNome());
                         switch (menuAcessarEquipamento){
@@ -240,6 +313,9 @@ public class Gerenciador {
                     break;
                 }
             }
+        }
+        if (!encontrado) {
+            erros.erroEquipamentoNaoEncontrado();
         }
     }
 }
