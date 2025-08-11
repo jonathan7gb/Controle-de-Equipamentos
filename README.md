@@ -131,9 +131,13 @@ Como funcionarão as novas opções:
 Ao selecionar, o sistema exibirá um submenu ou direto os relatórios:
 
 Quantidade total de equipamentos em estoque
+
 Equipamento com maior preço
+
 Equipamento com maior quantidade
+
 Equipamentos com estoque baixo (quantidade < 5)
+
 8 - Busca Avançada por Nome
 
 O usuário digita uma parte do nome e o sistema lista todos os equipamentos que contenham esse texto no nome.
