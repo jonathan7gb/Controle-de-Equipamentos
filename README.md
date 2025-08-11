@@ -1,5 +1,6 @@
 ## Prova Prática – Sistema de Controle de Equipamentos WEG Versão 1.0
 <hr>
+
 ## Situação-Problema
 A WEG precisa melhorar o controle dos equipamentos usados na manutenção das suas linhas de produção. O controle atual dificulta a localização rápida e o acompanhamento das quantidades disponíveis.
 <hr>
@@ -7,7 +8,8 @@ Você foi contratado como desenvolvedor Java para criar um sistema via terminal,
 
 O sistema deve utilizar os conceitos de Programação Orientada a Objetos que você estudou, incluindo tratamento de exceções para entradas inválidas.
 <hr>
-##Objetivo
+
+## Objetivo
 Desenvolver uma aplicação Java com as classes necessárias para representar os equipamentos e gerenciar seu estoque, aplicando encapsulamento, herança, polimorfismo, sobrescrita, listas e tratamento de exceções.
 <hr>
 ## Requisitos Técnicos
