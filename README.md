@@ -161,6 +161,7 @@ Exemplo de Tela do Menu – Sistema WEG Versão 2.0
 Digite a opção desejada:
 
 Como funcionarão as novas opções:
+
 7 - Relatórios de Estoque
 
 Ao selecionar, o sistema exibirá um submenu ou direto os relatórios:
