@@ -16,33 +16,57 @@ Desenvolver uma aplicação Java com as classes necessárias para representar os
 ## Requisitos Técnicos
 <hr>
 1. Classe Equipamento
+
 Atributos:
+
 codigo (String)
+
 nome (String)
+
 quantidade (int)
+
 preco (double)
+
 Construtores padrão e parametrizado
+
 Métodos getters e setters
+
 Método toString() sobrescrito para exibir os dados do equipamento
+
 <hr>
+
 2. Subclasses de Equipamento
+
 MotorEletrico com atributo adicional:
+
 potencia (double)
+
 PainelControle com atributo adicional:
+
 tensao (String)
+
 <hr>
+
 3. Classe EstoqueService
+
 Gerenciar uma lista de Equipamento
 
 ## Permitir:
 
 Cadastrar equipamentos
+
 Listar todos os equipamentos
+
 Listar equipamentos filtrando por tipo (MotorEletrico ou PainelControle)
+
 Pesquisar equipamento pelo código
+
 Remover equipamento pelo código
+
 Movimentar o estoque (adicionar ou retirar quantidade), não permitindo que a quantidade fique negativa
+
 📌 Movimentação de Estoque
+
 A movimentação de estoque permite atualizar a quantidade de equipamentos disponíveis, garantindo que o controle do estoque esteja sempre correto e atualizado.
 
 O usuário poderá escolher entre duas operações principais:
@@ -75,12 +99,16 @@ Exibir menu via terminal com as opções:
 0 - Sair
 
 Usar try-catch para validar as entradas
+
 Chamar os métodos do EstoqueService para executar as operações
 <hr>
 
 ## 5. Classe Main
+
 Instanciar as classes necessárias e executar o menu
+
 Versão 2.0 – Melhorias e Novas Funcionalidades
+
 Após a finalização da versão 1.0, foram solicitadas melhorias no sistema, contemplando as seguintes funcionalidades extras para aprimorar o controle e a usabilidade:
 
 Funcionalidades Extras (para treinar e pensar)
@@ -88,10 +116,15 @@ Relatórios de Estoque
 Implementar cálculos e exibir os seguintes relatórios:
 
 Quantidade total de equipamentos em estoque.
+
 Equipamento com maior preço.
+
 Equipamento com maior quantidade disponível.
+
 Equipamentos com estoque baixo (quantidade inferior a 5 unidades).
+
 Busca Avançada por Nome e Preço
+
 Permitir busca por equipamentos que contenham parte do nome informado (não sendo necessário o nome completo ou exato).
 
 Dica: Utilize o método contains() da classe String para verificar se um texto está contido em outro.
@@ -148,11 +181,19 @@ O usuário informa um valor mínimo de preço e o sistema lista todos os equipam
 
 Critérios de Avaliação
 Uso correto de encapsulamento (private, getters/setters)
+
 Implementação correta de herança e sobrescrita do método toString()
+
 utilização de instanceof
+
 Manipulação correta da lista de equipamentos (adicionar, listar, pesquisar, remover)
+
 Implementação funcional da movimentação do estoque com restrição para não ficar negativo
+
 Tratamento adequado de exceções para entradas inválidas
+
 Operação lógica.
+
 Separação lógica das responsabilidades entre as classes
+
 Código organizado, legível (Clean code).
