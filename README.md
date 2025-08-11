@@ -1,15 +1,16 @@
-Prova Prática – Sistema de Controle de Equipamentos WEG Versão 1.0
-Situação-Problema
+## Prova Prática – Sistema de Controle de Equipamentos WEG Versão 1.0
+<hr>
+##Situação-Problema
 A WEG precisa melhorar o controle dos equipamentos usados na manutenção das suas linhas de produção. O controle atual dificulta a localização rápida e o acompanhamento das quantidades disponíveis.
-
+<hr>
 Você foi contratado como desenvolvedor Java para criar um sistema via terminal, que permita o cadastro, listagem, pesquisa, remoção e movimentação dos equipamentos.
 
 O sistema deve utilizar os conceitos de Programação Orientada a Objetos que você estudou, incluindo tratamento de exceções para entradas inválidas.
-
-Objetivo
+<hr>
+##Objetivo
 Desenvolver uma aplicação Java com as classes necessárias para representar os equipamentos e gerenciar seu estoque, aplicando encapsulamento, herança, polimorfismo, sobrescrita, listas e tratamento de exceções.
-
-Requisitos Técnicos
+<hr>
+##Requisitos Técnicos
 1. Classe Equipamento
 Atributos:
 codigo (String)
@@ -19,15 +20,17 @@ preco (double)
 Construtores padrão e parametrizado
 Métodos getters e setters
 Método toString() sobrescrito para exibir os dados do equipamento
+<hr>
 2. Subclasses de Equipamento
 MotorEletrico com atributo adicional:
 potencia (double)
 PainelControle com atributo adicional:
 tensao (String)
+<hr>
 3. Classe EstoqueService
 Gerenciar uma lista de Equipamento
 
-Permitir:
+## Permitir:
 
 Cadastrar equipamentos
 Listar todos os equipamentos
