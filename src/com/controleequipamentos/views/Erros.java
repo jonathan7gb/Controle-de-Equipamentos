@@ -56,4 +56,7 @@ public class Erros {
 
     //=================================================================================
 
+    public void erroMovimentacaoInvalida(String erro) {
+        System.out.println("\n|| Movimentação inválida ("+ erro +"). Verifique a quantidade e tente novamente. ||\n");
+    }
 }

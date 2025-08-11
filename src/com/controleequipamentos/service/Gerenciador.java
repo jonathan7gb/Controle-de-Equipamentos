@@ -77,15 +77,47 @@ public class Gerenciador {
                                 }
 
                                 String codigoEquip = menus.insiraCodigo();
-                                visualizarDetalhes(erros, retornos, codigoEquip, sair, menus, menuAcessarEquipamento);
+                                 visualizarDetalhesMotor(erros, retornos, codigoEquip, sair, menus, menuAcessarEquipamento);
                             }
 
-                            if (achou == false) {
+                            if (!achou) {
                                 erros.erroEquipamentoNaoEncontrado();
                             }
 
-                            } else if (menuAcessar == 2) {
+                        } else if (menuAcessar == 2) {
+                               boolean achou = false;
+                               totalAchados = 0;
+                               String nomeOuCodigo = menus.insiraNomeOuCodigoEquipamento();
 
+                                for (Equipamento equip : lista_equipamentos) {
+                                    if (equip instanceof PainelControle painel) {
+                                        if (painel.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(painel.getCodigo())) {
+                                            achou = true;
+                                            totalAchados++;
+                                        }
+                                    }
+                                }
+
+                                boolean sair = false;
+
+                                if (totalAchados >= 1) {
+                                    retornos.totalProdutosAchados(totalAchados);
+                                    for (Equipamento equip : lista_equipamentos) {
+                                        if (equip instanceof PainelControle painel) {
+                                            if (painel.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(painel.getCodigo())) {
+                                                System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
+                                                System.out.println("|| ==============================");
+                                            }
+                                        }
+                                    }
+
+                                    String codigoEquip = menus.insiraCodigo();
+                                    visualizarDetalhesPainel(erros, retornos, codigoEquip, sair, menus, menuAcessarEquipamento);
+                                }
+
+                                if (!achou) {
+                                    erros.erroEquipamentoNaoEncontrado();
+                                }
                             } else if (menuAcessar == 0) {
                                 break;
                             } else {
@@ -97,12 +129,15 @@ public class Gerenciador {
                     }
 
                 }//BREAK DO CASE 2 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
+
+            case 3 -> {
+
             }
-        //ENCERRA O SWITCH -> OPÇÃO MENU PRINCIPAL DO SISTEMA
+            }//ENCERRA O SWITCH -> OPÇÃO MENU PRINCIPAL DO SISTEMA
     }
 
 
-    public void visualizarDetalhes(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
+    public void visualizarDetalhesMotor(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
         for (Equipamento equip : lista_equipamentos) {
             if (equip instanceof MotorEletrico motor) {
                 if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
@@ -117,11 +152,80 @@ public class Gerenciador {
                                 break;
                             }
                             case 2 ->{
-
+                                int escolhaMovimentarEstoque = menus.movimentarEstoque(motor.getQuantidade());
+                                if (escolhaMovimentarEstoque == 1){
+                                    int quantidade = menus.insiraQuantidade("adicionar");
+                                    motor.setQuantidade(motor.getQuantidade() + quantidade);
+                                }else if (escolhaMovimentarEstoque == 2 ){
+                                    int quantidade = menus.insiraQuantidade("remover");
+                                    int quantidadeValidar = motor.getQuantidade() - quantidade;
+                                    if(quantidadeValidar < 0){
+                                        erros.erroMovimentacaoInvalida("quantidade não pode ser menor que 0");
+                                    }else{
+                                        motor.setQuantidade(quantidadeValidar);
+                                    }
+                                }else if(escolhaMovimentarEstoque == 0){
+                                    break;
+                                }else{
+                                    erros.opcaoInvalida();
+                                }
                             }
                             case 3 ->{
                                 retornos.produtoRemovidoComSucesso();
                                 lista_equipamentos.remove(motor);
+                                sair = true;
+                            }
+                            case 0 ->{
+                                break;
+                            }
+                            default -> {
+                                erros.opcaoInvalida();
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    public void visualizarDetalhesPainel(Erros erros, Retornos retornos, String nomeOuCodigo, boolean sair, Menus menus, int menuAcessarEquipamento){
+        for (Equipamento equip : lista_equipamentos) {
+            if (equip instanceof PainelControle painel) {
+                if (painel.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(painel.getCodigo())) {
+
+                    while(menuAcessarEquipamento != 0 && !sair){
+                        menuAcessarEquipamento = menus.menuAcessoEquipamento(painel.getNome());
+                        switch (menuAcessarEquipamento){
+                            case 1 -> {
+                                System.out.println("|| ===== DETALHES ===== ||");
+                                System.out.println(painel);
+                                System.out.println("|| ==================== ||");
+                                break;
+                            }
+                            case 2 ->{
+                                int escolhaMovimentarEstoque = menus.movimentarEstoque(painel.getQuantidade());
+                                if (escolhaMovimentarEstoque == 1){
+                                    int quantidade = menus.insiraQuantidade("adicionar");
+                                    painel.setQuantidade(painel.getQuantidade() + quantidade);
+                                }else if (escolhaMovimentarEstoque ==2 ){
+                                    int quantidade = menus.insiraQuantidade("remover");
+                                    int quantidadeValidar = painel.getQuantidade() - quantidade;
+                                    if(quantidadeValidar < 0){
+                                        erros.erroMovimentacaoInvalida("quantidade não pode ser menor que 0");
+                                    }else{
+                                        painel.setQuantidade(quantidadeValidar);
+                                    }
+                                }else if(escolhaMovimentarEstoque == 0){
+                                    break;
+                                }else{
+                                    erros.opcaoInvalida();
+                                }
+                            }
+                            case 3 ->{
+                                retornos.produtoRemovidoComSucesso();
+                                lista_equipamentos.remove(painel);
                                 sair = true;
                             }
                             case 0 ->{

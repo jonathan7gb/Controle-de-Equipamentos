@@ -163,4 +163,59 @@ public class Menus {
         return codigoEquipamento;
     }
 
+    //=================================================
+
+    public int movimentarEstoque(int quantidadeAtual){
+        int opcao = 0;
+        boolean valido = false;
+
+        System.out.println("\n|| ===== Movimentar Estoque ===== ||");
+        System.out.println("|| 1 - Adicionar ao Estoque      ||");
+        System.out.println("|| 2 - Remover do Estoque        ||");
+        System.out.println("|| 0 - Voltar ao Menu Anterior   ||");
+        System.out.println("|| ============================= ||");
+        System.out.println("|| Quantidade Atual: " + quantidadeAtual + "   ||");
+        System.out.println("|| ============================= ||");
+
+        while(!valido){
+            System.out.print("|| Escolha uma opção: ");
+            String opcaoStr = scStr.nextLine();
+
+            try{
+                opcao = Integer.parseInt(opcaoStr);
+                valido = true;
+            }catch(NumberFormatException e){
+                erros.opcaoInvalida();
+            }
+        }
+
+        System.out.println("");
+        return opcao;
+    }
+
+    //=================================================
+
+    public int insiraQuantidade( String acao ){
+        int quantidade = 0;
+        boolean valido = false;
+
+        while(!valido){
+            System.out.print("|| Insira a quantidade a " + acao + ": ");
+            String quantidadeStr = scStr.nextLine();
+
+            try{
+                quantidade = Integer.parseInt(quantidadeStr);
+                if (quantidade < 0) {
+                    erros.erroQuantidadeInvalida();
+                }else{
+                    valido = true;
+                }
+            }catch(NumberFormatException e){
+                erros.erroQuantidadeInvalida();
+            }
+        }
+
+        return quantidade;
+    }
+
 }
