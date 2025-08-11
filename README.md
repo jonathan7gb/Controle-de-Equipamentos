@@ -15,6 +15,7 @@ Desenvolver uma aplicação Java com as classes necessárias para representar os
 
 ## Requisitos Técnicos
 <hr>
+
 1. Classe Equipamento
 
 Atributos:
