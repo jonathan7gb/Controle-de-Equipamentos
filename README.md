@@ -104,14 +104,21 @@ Exemplo de Tela do Menu – Sistema WEG Versão 2.0
 ===============================
 
 1 - Cadastrar Equipamento
+
 2 - Listar Todos os Equipamentos
+
 3 - Listar Equipamentos por Tipo
+
 4 - Pesquisar Equipamento por Código
+
 5 - Remover Equipamento por Código
+
 6 - Movimentar Estoque (Adicionar/Retirar Quantidade)
 
 7 - Relatórios de Estoque
+
 8 - Busca Avançada por Nome
+
 9 - Busca Avançada por Preço
 
 0 - Sair
