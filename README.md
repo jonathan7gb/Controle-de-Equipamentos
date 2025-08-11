@@ -12,6 +12,7 @@ O sistema deve utilizar os conceitos de Programação Orientada a Objetos que vo
 ## Objetivo
 Desenvolver uma aplicação Java com as classes necessárias para representar os equipamentos e gerenciar seu estoque, aplicando encapsulamento, herança, polimorfismo, sobrescrita, listas e tratamento de exceções.
 <hr>
+
 ## Requisitos Técnicos
 1. Classe Equipamento
 Atributos:
@@ -55,7 +56,7 @@ Esta opção é utilizada para equipamentos que serão usados, descartados, envi
 
 Durante o processo, o sistema solicita o código do equipamento e a quantidade a movimentar, atualizando o estoque conforme a operação escolhida. Caso a retirada ultrapasse a quantidade disponível, o sistema impedirá a operação e exibirá uma mensagem de erro.
 
-4. Classe InterfaceUsuario
+## 4. Classe InterfaceUsuario
 Exibir menu via terminal com as opções:
 
 1 - Cadastrar Equipamento
@@ -74,7 +75,9 @@ Exibir menu via terminal com as opções:
 
 Usar try-catch para validar as entradas
 Chamar os métodos do EstoqueService para executar as operações
-5. Classe Main
+<hr>
+
+## 5. Classe Main
 Instanciar as classes necessárias e executar o menu
 Versão 2.0 – Melhorias e Novas Funcionalidades
 Após a finalização da versão 1.0, foram solicitadas melhorias no sistema, contemplando as seguintes funcionalidades extras para aprimorar o controle e a usabilidade:
