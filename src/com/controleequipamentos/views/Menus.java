@@ -15,6 +15,8 @@ public class Menus {
         System.out.println("|| 1 - Cadastrar Equipamento          ||");
         System.out.println("|| 2 - Acessar Equipamento            ||");
         System.out.println("|| 3 - Listar Equipamentos            ||");
+        System.out.println("|| 4 - Relatórios de Equipamentos     ||");
+        System.out.println("|| 5 - Buscar por Preço (Min e Max)   ||");
         System.out.println("|| 0 - Sair do Sistema                ||");
         System.out.println("|| ================================== ||");
 
@@ -230,6 +232,36 @@ public class Menus {
         System.out.println("|| 3 - Listar Todos os Equipamentos ||");
         System.out.println("|| 0 - Voltar ao Menu Principal     ||");
         System.out.println("|| ================================ ||");
+
+        while(!valido){
+            System.out.print("|| Escolha uma opção: ");
+            String opcaoStr = scStr.nextLine();
+
+            try{
+                opcao = Integer.parseInt(opcaoStr);
+                valido = true;
+            }catch(NumberFormatException e){
+                erros.opcaoInvalida();
+            }
+        }
+
+        System.out.println("");
+        return opcao;
+    }
+
+    //=================================================
+
+    public int menuRelatorios(){
+        int opcao = 0;
+        boolean valido = false;
+
+        System.out.println("\n|| ============ Relatórios de Equipamentos =========== ||");
+        System.out.println("|| 1 - Quantidade total de equipamentos em estoque     ||");
+        System.out.println("|| 2 - Equipamento com maior preço                     ||");
+        System.out.println("|| 3 - Equipamento com maior quantidade                ||");
+        System.out.println("|| 4 - Equipamentos com estoque baixo (quantidade < 5) ||");
+        System.out.println("|| 0 - Voltar ao Menu Principal                        ||");
+        System.out.println("|| =================================================== ||");
 
         while(!valido){
             System.out.print("|| Escolha uma opção: ");

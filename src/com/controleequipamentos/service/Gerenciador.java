@@ -72,8 +72,7 @@ public class Gerenciador {
                                 for (Equipamento equip : lista_equipamentos) {
                                     if (equip instanceof MotorEletrico motor) {
                                         if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
-                                            System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
-                                            System.out.println("|| ====================================");
+                                            retornos.visuazlizarEquipamento(motor.getCodigo(), motor.getNome());
                                         }
                                     }
                                 }
@@ -107,8 +106,7 @@ public class Gerenciador {
                                     for (Equipamento equip : lista_equipamentos) {
                                         if (equip instanceof PainelControle painel) {
                                             if (painel.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(painel.getCodigo())) {
-                                                System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
-                                                System.out.println("|| ==============================");
+                                                retornos.visuazlizarEquipamento(painel.getCodigo(), painel.getNome());
                                             }
                                         }
                                     }
@@ -144,8 +142,7 @@ public class Gerenciador {
                             System.out.println("|| ====== MOTORES ELÉTRICOS ===== ||");
                             for(Equipamento equip : lista_equipamentos){
                                 if (equip instanceof MotorEletrico motor){
-                                    System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
-                                    System.out.println("|| ============================== || ");
+                                    retornos.visuazlizarEquipamento(motor.getCodigo(), motor.getNome());
                                     encontrado = true;
                                 }
                             }
@@ -160,8 +157,7 @@ public class Gerenciador {
                             System.out.println("|| ====== PAINÉIS DE CONTROLE ===== ||");
                             for(Equipamento equip : lista_equipamentos){
                                 if (equip instanceof PainelControle painel){
-                                    System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
-                                    System.out.println("|| ================================ || ");
+                                    retornos.visuazlizarEquipamento(painel.getCodigo(), painel.getNome());
                                     encontrado = true;
                                 }
                             }
@@ -176,12 +172,10 @@ public class Gerenciador {
                             System.out.println("|| ====== TODOS EQUIPAMENTOS ===== ||");
                             for(Equipamento equip : lista_equipamentos){
                                 if (equip instanceof PainelControle painel){
-                                    System.out.println("|| " + painel.getCodigo() + " - " + painel.getNome());
-                                    System.out.println("|| =============================== || ");
+                                    retornos.visuazlizarEquipamento(painel.getCodigo(), painel.getNome());
                                     encontrado = true;
                                 }else if (equip instanceof MotorEletrico motor){
-                                    System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
-                                    System.out.println("|| =============================== || ");
+                                    retornos.visuazlizarEquipamento(motor.getCodigo(), motor.getNome());
                                     encontrado = true;
                                 }
                             }
@@ -202,6 +196,81 @@ public class Gerenciador {
                 }while(escolhaListar != 0);
             }//BREAK DO CASE 3 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
 
+            case 4 ->{
+                // ============ RELATÓRIOS DE EQUIPAMENTOS ========
+                int opcaoRelatorio = -1;
+                do{
+                    opcaoRelatorio = menus.menuRelatorios();
+
+                    switch (opcaoRelatorio){
+                        case 1 -> {
+                            retornos.totalEquipamentosEmEstoque(Equipamento.getQuantidadeDeEquipamentosEmEstoque());
+                        }//BREAK DO CASE 1 -> ESCOLHA RELATÓRIOS
+
+                        case 2 -> {
+                            if(lista_equipamentos.isEmpty()){
+                                erros.nenhumEquipamentoCadastrado();
+                                break;
+                            }else {
+                                boolean achou = false;
+                                double maiorPreco = 0.0;
+                                String codigoDoMaior = "";
+                                for (Equipamento equip : lista_equipamentos) {
+                                    if (equip instanceof MotorEletrico motor) {
+                                        if (motor.getPreco() > maiorPreco) {
+                                            maiorPreco = motor.getPreco();
+                                            codigoDoMaior = motor.getCodigo();
+                                        }
+                                    } else if (equip instanceof PainelControle painel) {
+                                        if (painel.getPreco() > maiorPreco) {
+                                            maiorPreco = painel.getPreco();
+                                            codigoDoMaior = painel.getCodigo();
+                                        }
+                                    }
+                                }
+
+                                for (Equipamento equipamento : lista_equipamentos) {
+                                    if (equipamento instanceof MotorEletrico motor) {
+                                        if (motor.getCodigo().equals(codigoDoMaior)) {
+                                            System.out.println("|| PRODUTO MAIS CARO EM ESTOQUE");
+                                            retornos.visuazlizarEquipamento(motor.getCodigo(), motor.getNome());
+                                            System.out.println("|| Preço: R$" + motor.getPreco());
+                                            System.out.println("|| ==============================");
+                                            achou = true;
+                                        }
+                                    } else if (equipamento instanceof PainelControle painel) {
+                                        if (painel.getCodigo().equals(codigoDoMaior)) {
+                                            System.out.println("|| PRODUTO MAIS CARO EM ESTOQUE");
+                                            retornos.visuazlizarEquipamento(painel.getCodigo(), painel.getNome());
+                                            System.out.println("|| Preço: R$" + painel.getPreco());
+                                            System.out.println("|| ==============================");
+                                            achou = true;
+                                        }
+                                    }
+                                }
+
+                                if (!achou) {
+                                    erros.erroEquipamentoNaoEncontrado();
+                                }
+                            }
+
+                        }//BREAK DO CASE 2 -> ESCOLHA RELATÓRIOS
+
+                        case 3 -> {
+
+                        }//BREAK DO CASE 3 -> ESCOLHA RELATÓRIOS
+
+                        case 4 -> {
+
+                        }//BREAK DO CASE 4 -> ESCOLHA RELATÓRIOS
+                    }
+                }while(opcaoRelatorio != 0);
+
+            }//BREAK DO CASE 4 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
+
+            case 5 -> {
+
+            }//BREAK DO CASE 5 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
         }//ENCERRA O SWITCH -> OPÇÃO MENU PRINCIPAL DO SISTEMA
     }
 
@@ -243,6 +312,7 @@ public class Gerenciador {
                             case 3 ->{
                                 retornos.equipamentoRemovidoComSucesso();
                                 lista_equipamentos.remove(motor);
+                                Equipamento.setQuantidadeDeEquipamentosEmEstoque(Equipamento.getQuantidadeDeEquipamentosEmEstoque() - 1);
                                 sair = true;
                             }
                             case 0 ->{
@@ -301,6 +371,7 @@ public class Gerenciador {
                             case 3 ->{
                                 retornos.equipamentoRemovidoComSucesso();
                                 lista_equipamentos.remove(painel);
+                                Equipamento.setQuantidadeDeEquipamentosEmEstoque(Equipamento.getQuantidadeDeEquipamentosEmEstoque() - 1);
                                 sair = true;
                             }
                             case 0 ->{

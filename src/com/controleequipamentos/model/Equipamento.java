@@ -57,11 +57,11 @@ public class Equipamento {
     }
 
     public static void setQuantidadeDeEquipamentosEmEstoque(int quantidadeDeEquipamentosEmEstoque) {
-        quantidadeDeEquipamentosEmEstoque = quantidadeDeEquipamentosEmEstoque;
+        Equipamento.quantidadeDeEquipamentosEmEstoque = quantidadeDeEquipamentosEmEstoque;
     }
 
     public static void addQuantidadeDeEquipamentosEmEstoque(int quantidade) {
-        quantidadeDeEquipamentosEmEstoque += quantidade;
+        Equipamento.quantidadeDeEquipamentosEmEstoque += quantidade;
     }
 
     @Override

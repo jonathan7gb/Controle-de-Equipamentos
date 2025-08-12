@@ -20,7 +20,7 @@ public class Main {
         do{
             opcao = menu.menuPrincipal();
 
-            if(opcao > 0 && opcao < 4){
+            if(opcao > 0 && opcao < 6){
                 gerenciador.gerenciardorEquipamentos(opcao, menu, cadastro, erro,retornos);
             }else if(opcao < 0 || opcao > 3){
                 erro.opcaoInvalida();

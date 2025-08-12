@@ -21,8 +21,18 @@ public class Retornos {
 
     //==================================================
 
-    public void totalProdutosEmEstoque(int total){
-        System.out.println("\n|| Total de produtos em estoque: " + total + " ||");
+    public void totalEquipamentosEmEstoque(int total){
+        System.out.println("|| Total de equipamentos em estoque: " + total + " ||");
+        System.out.println("|| ======================================");
+    }
+
+    //==================================================
+
+    public void visuazlizarEquipamento(String codigo, String nome) {
+        System.out.println("|| " + codigo + " - " + nome);
         System.out.println("|| ==============================");
     }
+
+    //==================================================
+
 }
