@@ -3,15 +3,18 @@ package com.controleequipamentos.model;
 public class MotorEletrico extends Equipamento{
 
     private double potencia;
+    private static int quantidadeDeEquipamentosEmEstoque;
 
     public MotorEletrico(String codigo, String nome, int quantidade, double preco, double potencia) {
         super(codigo, nome, quantidade, preco);
         this.potencia = potencia;
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public MotorEletrico() {
         super();
         this.potencia = 0.0;
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public double getPotencia() {

@@ -6,12 +6,14 @@ public class Equipamento {
     private String nome;
     private int quantidade;
     private double preco;
+    private static int quantidadeDeEquipamentosEmEstoque = 0;
 
     public Equipamento(){
         this.codigo = "";
         this.nome = "";
         this.quantidade = 0;
         this.preco = 0.0;
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public Equipamento(String codigo, String nome, int quantidade, double preco) {
@@ -19,6 +21,7 @@ public class Equipamento {
         this.nome = nome;
         this.quantidade = quantidade;
         this.preco = preco;
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public String getCodigo() {
@@ -47,6 +50,18 @@ public class Equipamento {
     }
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public static int getQuantidadeDeEquipamentosEmEstoque() {
+        return quantidadeDeEquipamentosEmEstoque;
+    }
+
+    public static void setQuantidadeDeEquipamentosEmEstoque(int quantidadeDeEquipamentosEmEstoque) {
+        quantidadeDeEquipamentosEmEstoque = quantidadeDeEquipamentosEmEstoque;
+    }
+
+    public static void addQuantidadeDeEquipamentosEmEstoque(int quantidade) {
+        quantidadeDeEquipamentosEmEstoque += quantidade;
     }
 
     @Override

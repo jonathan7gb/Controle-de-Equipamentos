@@ -3,15 +3,18 @@ package com.controleequipamentos.model;
 public class PainelControle extends Equipamento{
 
     private String tensao;
+    private static int quantidadeDeEquipamentosEmEstoque;
 
     public PainelControle(String codigo, String nome, int quantidade, double preco, String tensao) {
         super(codigo, nome, quantidade, preco);
         this.tensao = tensao;
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public PainelControle() {
         super();
         this.tensao = "";
+        quantidadeDeEquipamentosEmEstoque++;
     }
 
     public String getTensao() {

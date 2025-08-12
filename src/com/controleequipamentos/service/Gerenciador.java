@@ -27,9 +27,11 @@ public class Gerenciador {
                     if (menuCadastro == 1) {
                         MotorEletrico motor_eletrico = cadastros.cadastrarMotorEletrico();
                         lista_equipamentos.add(motor_eletrico);
+                        retornos.equipamentoAdicionadoComSucesso();
                     } else if (menuCadastro == 2) {
                         PainelControle painel_controle = cadastros.cadastrarPainelControle();
                         lista_equipamentos.add(painel_controle);
+                        retornos.equipamentoAdicionadoComSucesso();
                     } else if (menuCadastro == 0) {
                         break;
                     } else {
@@ -71,7 +73,7 @@ public class Gerenciador {
                                     if (equip instanceof MotorEletrico motor) {
                                         if (motor.getNome().toLowerCase().contains(nomeOuCodigo.toLowerCase()) || nomeOuCodigo.equalsIgnoreCase(motor.getCodigo())) {
                                             System.out.println("|| " + motor.getCodigo() + " - " + motor.getNome());
-                                            System.out.println("|| ==============================");
+                                            System.out.println("|| ====================================");
                                         }
                                     }
                                 }
@@ -239,7 +241,7 @@ public class Gerenciador {
                                 }
                             }
                             case 3 ->{
-                                retornos.produtoRemovidoComSucesso();
+                                retornos.equipamentoRemovidoComSucesso();
                                 lista_equipamentos.remove(motor);
                                 sair = true;
                             }
@@ -297,7 +299,7 @@ public class Gerenciador {
                                 }
                             }
                             case 3 ->{
-                                retornos.produtoRemovidoComSucesso();
+                                retornos.equipamentoRemovidoComSucesso();
                                 lista_equipamentos.remove(painel);
                                 sair = true;
                             }
