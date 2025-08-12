@@ -279,5 +279,30 @@ public class Menus {
         return opcao;
     }
 
+    //=================================================
+
+    public double insiraPrecoPesquisa(String acao){
+        double preco = 0;
+        boolean valido = false;
+
+        while(!valido){
+            System.out.print("|| Insira o preço " + acao + ": ");
+            String quantidadeStr = scStr.nextLine();
+
+            try{
+                preco = Double.parseDouble(quantidadeStr);
+                if (preco < 0) {
+                    erros.erroQuantidadeInvalida();
+                }else{
+                    valido = true;
+                }
+            }catch(NumberFormatException e){
+                erros.erroQuantidadeInvalida();
+            }
+        }
+
+        return preco;
+    }
+
 
 }

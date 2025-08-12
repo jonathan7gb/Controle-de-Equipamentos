@@ -18,6 +18,7 @@ public class Main {
         int opcao = -1;
 
         do{
+
             opcao = menu.menuPrincipal();
 
             if(opcao > 0 && opcao < 6){
