@@ -23,15 +23,37 @@ public class Gerenciador {
 
                 do {
                     menuCadastro = menus.menuCadastrarEquipamentos();
+                    boolean cadastrado = false;
 
                     if (menuCadastro == 1) {
                         MotorEletrico motor_eletrico = cadastros.cadastrarMotorEletrico();
-                        lista_equipamentos.add(motor_eletrico);
-                        retornos.equipamentoAdicionadoComSucesso();
+                        for(Equipamento equip : lista_equipamentos){
+                            if(equip.getCodigo().equals(motor_eletrico.getCodigo())){
+                                erros.erroEquipamentoJaCadastrado();
+                                cadastrado =  true;
+                                return;
+                            }
+                        }
+
+                        if(cadastrado == false){
+                            lista_equipamentos.add(motor_eletrico);
+                            retornos.equipamentoAdicionadoComSucesso();
+
+                        }
+
                     } else if (menuCadastro == 2) {
                         PainelControle painel_controle = cadastros.cadastrarPainelControle();
-                        lista_equipamentos.add(painel_controle);
-                        retornos.equipamentoAdicionadoComSucesso();
+                        for(Equipamento equip : lista_equipamentos){
+                            if(equip.getCodigo().equals(painel_controle.getCodigo())){
+                                erros.erroEquipamentoJaCadastrado();
+                                cadastrado =  true;
+                                return;
+                            }
+                        }
+                        if(cadastrado == false) {
+                            lista_equipamentos.add(painel_controle);
+                            retornos.equipamentoAdicionadoComSucesso();
+                        }
                     } else if (menuCadastro == 0) {
                         break;
                     } else {
