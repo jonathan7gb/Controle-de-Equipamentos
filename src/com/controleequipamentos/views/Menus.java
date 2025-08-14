@@ -171,7 +171,7 @@ public class Menus {
         int opcao = 0;
         boolean valido = false;
 
-        System.out.println("\n|| ===== Movimentar Estoque ===== ||");
+        System.out.println("|| ===== Movimentar Estoque ===== ||");
         System.out.println("|| 1 - Adicionar ao Estoque      ||");
         System.out.println("|| 2 - Remover do Estoque        ||");
         System.out.println("|| 0 - Voltar ao Menu Anterior   ||");

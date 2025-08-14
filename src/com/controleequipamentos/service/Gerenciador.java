@@ -12,7 +12,13 @@ public class Gerenciador {
         this.lista_equipamentos = new ArrayList<>();
     }
 
+    public List<Equipamento> getLista_equipamentos() {
+        return lista_equipamentos;
+    }
 
+    public void setLista_equipamentos(List<Equipamento> lista_equipamentos) {
+        this.lista_equipamentos = lista_equipamentos;
+    }
 
     public void gerenciardorEquipamentos(int opcaoMenuPrincipal, Menus menus, Cadastros cadastros, Erros erros, Retornos retornos){
 
@@ -57,15 +63,15 @@ public class Gerenciador {
                     } else if (menuCadastro == 0) {
                         break;
                     } else {
-                        erros.opcaoInvalida();
+                        erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de cadastro
                     }
                 } while (menuCadastro != 0);
             } //BREAK DO CASE 1 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
 
             case 2 -> {
                 // ========== ACESSAR EQUIPAMENTO ========
-                if (lista_equipamentos.isEmpty()) {
-                    erros.nenhumEquipamentoCadastrado();
+                if(lista_equipamentos.isEmpty()){
+                    erros.nenhumEquipamentoCadastrado(); // Caso a Lista esteja vazia printa erro
                 } else {
                     int menuAcessar = -1;
                     int menuAcessarEquipamento = -1;
@@ -143,7 +149,7 @@ public class Gerenciador {
                             } else if (menuAcessar == 0) {
                                 break;
                             } else {
-                                erros.opcaoInvalida();
+                                erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de acesso
                             }
 
                     }while (menuAcessar != 0) ;
@@ -212,7 +218,7 @@ public class Gerenciador {
                         } //BREAK DO CASE 0 -> ESCOLHA LISTAR
 
                         default -> {
-                            erros.opcaoInvalida();
+                            erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de listar
                         } //BREAK DO CASE DEFAULT -> ESCOLHA LISTAR
                     }
                 }while(escolhaListar != 0);
@@ -231,7 +237,7 @@ public class Gerenciador {
 
                         case 2 -> {
                             if(lista_equipamentos.isEmpty()){
-                                erros.nenhumEquipamentoCadastrado();
+                                erros.nenhumEquipamentoCadastrado(); // Caso a Lista esteja vazia printa erro
                                 break;
                             }else {
                                 boolean achou = false;
@@ -272,7 +278,7 @@ public class Gerenciador {
                                 }
 
                                 if (!achou) {
-                                    erros.erroEquipamentoNaoEncontrado();
+                                    erros.erroEquipamentoNaoEncontrado(); // Erro caso o equipamento não seja encontrado
                                 }
                             }
 
@@ -280,7 +286,7 @@ public class Gerenciador {
 
                         case 3 -> {
                             if(lista_equipamentos.isEmpty()){
-                                erros.nenhumEquipamentoCadastrado();
+                                erros.nenhumEquipamentoCadastrado(); // Caso a Lista esteja vazia printa erro
                                 break;
                             }else {
                                 boolean achou = false;
@@ -321,14 +327,14 @@ public class Gerenciador {
                                 }
 
                                 if (!achou) {
-                                    erros.erroEquipamentoNaoEncontrado();
+                                    erros.erroEquipamentoNaoEncontrado(); // Erro caso o equipamento não seja encontrado
                                 }
                             }
                         }//BREAK DO CASE 3 -> ESCOLHA RELATÓRIOS
 
                         case 4 -> {
                             if(lista_equipamentos.isEmpty()){
-                                erros.nenhumEquipamentoCadastrado();
+                                erros.nenhumEquipamentoCadastrado(); // Caso a Lista esteja vazia printa erro
                                 break;
                             }else{
                                 System.out.println("|| PRODUTO(S) COM QUANTIDADE EM ESTOQUE INFERIOR A 5 ");
@@ -345,14 +351,19 @@ public class Gerenciador {
                                 }
                             }
                         }//BREAK DO CASE 4 -> ESCOLHA RELATÓRIOS
+
+                        default -> {
+                            erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de acesso
+                            break;
+                        }
                     }
                 }while(opcaoRelatorio != 0);
 
             }//BREAK DO CASE 4 -> OPÇÃO MENU PRINCIPAL DO SISTEMA
 
             case 5 -> {
-                if (lista_equipamentos.isEmpty()){
-                    erros.nenhumEquipamentoCadastrado();
+                if(lista_equipamentos.isEmpty()){
+                    erros.nenhumEquipamentoCadastrado(); // Caso a Lista esteja vazia printa erro
                     break;
                 }else{
                     boolean achou = false;
@@ -380,7 +391,7 @@ public class Gerenciador {
                     System.out.println("");
 
                     if (!achou) {
-                        erros.erroEquipamentoNaoEncontrado();
+                        erros.erroEquipamentoNaoEncontrado(); // Erro caso o equipamento não seja encontrado
                         System.out.println("");
                         System.out.println("");
                     }
@@ -422,7 +433,7 @@ public class Gerenciador {
                                 }else if(escolhaMovimentarEstoque == 0){
                                     break;
                                 }else{
-                                    erros.opcaoInvalida();
+                                    erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de movimentar estoque
                                 }
                             }
                             case 3 ->{
@@ -435,7 +446,7 @@ public class Gerenciador {
                                 break;
                             }
                             default -> {
-                                erros.opcaoInvalida();
+                                erros.opcaoInvalida(); // Erro caso a opção seja inválida no menu de acesso
                                 break;
                             }
                         }
@@ -446,7 +457,7 @@ public class Gerenciador {
         }
 
         if (!encontrado) {
-            erros.erroEquipamentoNaoEncontrado();
+            erros.erroEquipamentoNaoEncontrado(); // Erro caso o equipamento não seja encontrado
         }
     }
 
@@ -504,7 +515,7 @@ public class Gerenciador {
             }
         }
         if (!encontrado) {
-            erros.erroEquipamentoNaoEncontrado();
+            erros.erroEquipamentoNaoEncontrado(); // Erro caso o equipamento não seja encontrado
         }
     }
 }
